@@ -119,7 +119,7 @@ def reset_password(token):
 #*****************
 @app.route('/<path:path>')
 def catch_all(path):
-    return redirect(url_for('index'))
+    return error_response(401)
 
 
 
