@@ -6,7 +6,7 @@ from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 
 
-class User(UserMixin, db.Model):
+class APIUser(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(120), index=True, unique=True)
@@ -20,7 +20,7 @@ class User(UserMixin, db.Model):
         return check_password_hash(self.password_hash, password)
 
     def __repr__(self):
-        return '<User {}>'.format(self.username)  
+        return '<APIUser {}>'.format(self.username)  
 
     def get_reset_password_token(self, expires_in=600):
         return jwt.encode(
@@ -34,11 +34,11 @@ class User(UserMixin, db.Model):
                             algorithms=['HS256'])['reset_password']
         except:
             return
-        return User.query.get(id)
+        return APIUser.query.get(id)
 
 
 @login.user_loader
 def load_user(id):
-	return User.query.get(int(id))
+	return APIUser.query.get(int(id))
 
 

@@ -1,14 +1,15 @@
-from flask import render_template, flash, redirect, url_for, request, session, make_response
+from flask import render_template, flash, redirect, url_for, request, session, make_response, jsonify, g
 from app import app, db
-from app.forms import LoginForm, RegistrationForm, NewProjectForm, EditProjectForm, ResetPasswordRequestForm, ResetPasswordForm
+from app.forms import LoginForm, DeleteUser, ResetPasswordRequestForm, ResetPasswordForm, RegistrationForm
 from flask_login import current_user, login_user, logout_user, login_required, UserMixin
-from app.models import User
+from app.models import APIUser
 from werkzeug.urls import url_parse
 from sqlalchemy import func, cast, Integer
 from app.email import send_password_reset_email
 import os
 import datetime
-
+from app.errors import bad_request
+from app.basicauth import basic_auth
 
 
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -33,7 +34,7 @@ def login():
         return redirect(url_for('index'))
     form = LoginForm()
     if form.validate_on_submit():
-        user = User.query.filter_by(username=form.username.data).first()
+        user = APIUser.query.filter_by(username=form.username.data).first()
         if user is None or not user.check_password(form.password.data):
             flash('Invalid username or password')
             return redirect(url_for('login'))
@@ -52,20 +53,28 @@ def logout():
 
 
 @app.route('/register', methods=['GET', 'POST'])
+@login_required
 def register():
-    dev = "Projects"
-    if current_user.is_authenticated:
-        return redirect(url_for('index'))
-
     form = RegistrationForm()
     if form.validate_on_submit():
-        user = User(username=form.username.data, email=form.email.data, role="user")
+        user = APIUser(username=form.username.data, email=form.email.data, role="user")
         user.set_password(form.password.data)
         db.session.add(user)
         db.session.commit()
         flash('Congratulations, you are now a registered user!')
         return redirect(url_for('index'))
-    return render_template('register.html', title='Register', form=form, jfilesize=jfilesize, cfilesize=cfilesize, dev=dev)
+    return render_template('register.html', title='Register', form=form, jfilesize=jfilesize, cfilesize=cfilesize)
+
+@app.route('/remove', methods=['GET', 'POST'])
+@login_required
+def remove():
+    form = DeleteUser()
+    if form.validate_on_submit():
+        APIUser.query.filter_by(username=form.username.data).delete()
+        db.session.commit()
+        flash('User deleted')
+        return redirect(url_for('index'))
+    return render_template('deleteuser.html', title='Delete User', form=form, jfilesize=jfilesize, cfilesize=cfilesize)
 
 
 @app.route('/reset_password_request', methods=['GET', 'POST'])
@@ -74,11 +83,17 @@ def reset_password_request():
         return redirect(url_for('index'))
     form = ResetPasswordRequestForm()
     if form.validate_on_submit():
-        user = User.query.filter_by(email=form.email.data).first()
+        user = APIUser.query.filter_by(email=form.email.data).first()
+        print(user.role)
         if user:
+            if user.role == "user":
+                flash('You do not have the proper authority')
+                return redirect(url_for('login'))
             send_password_reset_email(user)
-        flash('Check your email for the instructions to reset your password')
-        return redirect(url_for('login'))
+            flash('Check your email for the instructions to reset your password')
+            return redirect(url_for('login'))
+        flash('Incorrect Email')
+        
     return render_template('reset_password_request.html', title='Reset Password', form=form, jfilesize=jfilesize, cfilesize=cfilesize)
 
 
@@ -86,7 +101,7 @@ def reset_password_request():
 def reset_password(token):
     if current_user.is_authenticated:
         return redirect(url_for('index'))
-    user = User.verify_reset_password_token(token)
+    user = APIUser.verify_reset_password_token(token)
     if not user:
         return redirect(url_for('index'))
     form = ResetPasswordForm()
@@ -99,12 +114,29 @@ def reset_password(token):
 
 
 
-
-
-
 #*****************
 #** Catch ALL
 #*****************
 @app.route('/<path:path>')
 def catch_all(path):
     return redirect(url_for('index'))
+
+
+
+
+
+
+
+
+#*****************
+#** API Routes
+#*****************
+
+@app.route('/api/v1/tender', methods=['GET', 'POST'])
+@basic_auth.login_required
+def apitenderpost():
+    data = request.get_json()
+    print(data['Name'])
+    print(data['Name2'])
+    return '{"Name" : "Value" , "Name2" : "Vale2"}'
+
