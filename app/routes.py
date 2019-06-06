@@ -1,4 +1,4 @@
-from flask import render_template, flash, redirect, url_for, request, session, make_response, jsonify, g
+from flask import render_template, flash, redirect, url_for, request, make_response, jsonify, g
 from app import app, db
 from app.forms import LoginForm, DeleteUser, ResetPasswordRequestForm, ResetPasswordForm, RegistrationForm
 from flask_login import current_user, login_user, logout_user, login_required, UserMixin
@@ -10,6 +10,7 @@ import os
 import datetime
 from app.errors import bad_request
 from app.basicauth import basic_auth
+from jsonschema import validate
 
 
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -135,8 +136,13 @@ def catch_all(path):
 @app.route('/api/v1/tender', methods=['GET', 'POST'])
 @basic_auth.login_required
 def apitenderpost():
-    data = request.get_json()
-    print(data['Name'])
-    print(data['Name2'])
+    # print(app.config['TENDER_SCHEMA'])
+    try:
+        data = request.get_json(force=True)
+    except TypeError:
+        return jsonify(message="Invalid json input"), 400
+
+    val = validate(instance=data, schema=app.config['TENDER_SCHEMA'])
+
     return '{"Name" : "Value" , "Name2" : "Vale2"}'
 
