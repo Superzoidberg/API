@@ -53,7 +53,7 @@ class Config(object):
       "title": "The Senderid Schema",
       "default": "",
       "examples": [
-        "925485US00"
+        "receiver"
       ],
       "pattern": "^(.*)$"
     },
@@ -63,7 +63,7 @@ class Config(object):
       "title": "The Receiverid Schema",
       "default": "",
       "examples": [
-        "519905KT"
+        "sender"
       ],
       "pattern": "^(.*)$"
     },
@@ -93,7 +93,7 @@ class Config(object):
       "title": "The Scac Schema",
       "default": "",
       "examples": [
-        "KNIG"
+        "SCAC"
       ],
       "pattern": "^(.*)$"
     },
@@ -285,7 +285,7 @@ class Config(object):
             "title": "The Name Schema",
             "default": "",
             "examples": [
-              "Wal-Mart Stores Inc"
+              "SOme Stores Inc"
             ],
             "pattern": "^(.*)$"
           },
@@ -463,7 +463,7 @@ class Config(object):
                 "title": "The Stopname Schema",
                 "default": "",
                 "examples": [
-                  "IDC 91515709 BAYTOWN"
+                  "BAYTOWN WIDGETS"
                 ],
                 "pattern": "^(.*)$"
               },
@@ -545,7 +545,7 @@ class Config(object):
                 "title": "The Name Schema",
                 "default": "",
                 "examples": [
-                  "DEREK JAMEYSON"
+                  "MONTE PYTHON"
                 ],
                 "pattern": "^(.*)$"
               },
@@ -555,7 +555,7 @@ class Config(object):
                 "title": "The Phone Schema",
                 "default": "",
                 "examples": [
-                  "2815732008"
+                  "5554561234"
                 ],
                 "pattern": "^(.*)$"
               },
