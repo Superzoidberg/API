@@ -152,5 +152,5 @@ def apitenderpost():
         vv = re.sub(r'(.*)\n.*', r'\1', vv)
         return bad_request(vv)
 
-    return '{"Name" : "Value" , "Name2" : "Vale2"}'
+    return '{"Status" : "Success" , "Message" : "Tender Posted"}'
 
