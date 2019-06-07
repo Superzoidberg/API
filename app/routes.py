@@ -11,6 +11,8 @@ import datetime
 from app.errors import bad_request
 from app.basicauth import basic_auth
 from jsonschema import validate
+import traceback
+import re
 
 
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -120,7 +122,7 @@ def reset_password(token):
 #*****************
 @app.route('/<path:path>')
 def catch_all(path):
-    return error_response(401)
+    return bad_request("Invalid endpoint")
 
 
 
@@ -140,9 +142,15 @@ def apitenderpost():
     try:
         data = request.get_json(force=True)
     except TypeError:
-        return jsonify(message="Invalid json input"), 400
+        return bad_request("Invalid json input")
 
-    val = validate(instance=data, schema=app.config['TENDER_SCHEMA'])
+    try:
+        validate(instance=data, schema=app.config['TENDER_SCHEMA'])
+    except:
+        var = traceback.format_exc()
+        vv = var[376:500]
+        vv = re.sub(r'(.*)\n.*', r'\1', vv)
+        return bad_request(vv)
 
     return '{"Name" : "Value" , "Name2" : "Vale2"}'
 
