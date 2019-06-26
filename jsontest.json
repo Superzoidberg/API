@@ -1,0 +1,415 @@
+[
+{
+    "Tender":{
+        "SenderID": "925485US00",
+        "ReceiverID": "519905KT",
+        "TenderedDate": "20190505",
+        "TenderedTime": "2324",
+        "SCAC": "KNIG",
+        "BillOfLading": "11111111",
+        "PaymentMethod": "PP",
+        "TenderStatus": "00",
+        "TotalPieces": "2784",
+        "TotalWeight": "32547",
+        "Hazmat": "N",
+        "ReferenceNumbers": [{
+                "Type": "PO",
+                "ReferenceNumber": "123456789"
+            },
+            {
+                "Type": "ACB",
+                "ReferenceNumber": "97"
+            },
+            {
+                "Type": "BL",
+                "ReferenceNumber": "BL1029384756"
+            }
+        ],
+        "RespondBy": {
+            "Date": "20190506",
+            "Time": "0800",
+            "TimeZone": "CT"
+        },
+        "Comments": [{
+                "Comment": "aaaaaaaaaaaaaaaaaaaaaaaaaa"
+            },
+            {
+                "Comment": "bbbbbbbbbbbbbbbbbbbbbbbbbb"
+            },
+            {
+                "Comment": "cccccccccccccccccccccccccc"
+            },
+            {
+                "Comment": "ddddddddddddddddddddddddddddd"
+            },
+            {
+                "Comment": "eeeeeeeeeeeeeeeeeeeeeee"
+            }
+        ],
+        "HeaderLocations": [{
+                "Type": "BT",
+                "Name": "Wal-Mart Stores Inc",
+                "ID": "0078742000008",
+                "Address": "",
+                "City": "",
+                "State": "",
+                "ZipCode": "",
+                "Country": ""
+            },
+            {
+                "Type": "SH",
+                "Name": "Wal-Mart Stores Inc",
+                "ID": "0078742000008",
+                "Address": "",
+                "City": "",
+                "State": "",
+                "ZipCode": "",
+                "Country": ""
+            }
+        ],
+        "Equipment": {
+            "Initial": "WC",
+            "TrailerNumber": "90012",
+            "TrailerType": "TF",
+            "TrailerSize": "5300"
+        },
+        "Stops": [{
+                "StopInfo": {
+                    "StopNumber": "1",
+                    "StopType": "SF",
+                    "StopName": "IDC 91515709 BAYTOWN",
+                    "StopAddress": "4554 OSCAR NELSON JR DR",
+                    "StopCity": "BAYTOWN",
+                    "StopState": "TX",
+                    "StopZip": "77523",
+                    "StopCountry": "USA",
+                    "StopID": "91515709"
+                },
+                "ContactInfo": {
+                    "Name": "DEREK JAMEYSON",
+                    "Phone": "2815732008",
+                    "Email": ""
+                },
+                "AppointmentInfo": {
+                    "EarlyDate": "20190505",
+                    "EarlyTime": "2315",
+                    "EarlyTimeZone": "CT",
+                    "LateDate": "20190505",
+                    "LateTime": "2315",
+                    "LateTimeZone": "CT"
+                },
+                "StopReferenceNumbers": [{
+                        "Type": "PO",
+                        "ReferenceNumber": "123456789"
+                    },
+                    {
+                        "Type": "ACB",
+                        "ReferenceNumber": "97"
+                    },
+                    {
+                        "Type": "BL",
+                        "ReferenceNumber": "BL1029384756"
+                    },
+                    {
+                        "Type": "P8",
+                        "ReferenceNumber": "91515709"
+                    }
+                ],
+                "OIDNumbers": [{
+                        "RefID": "28",
+                        "PO": "0815197030",
+                        "Pieces": "3",
+                        "Weight": "5361",
+                        "Volume": "102"
+                    },
+                    {
+                        "RefID": "28",
+                        "PO": "1065187836",
+                        "Pieces": "194",
+                        "Weight": "24563",
+                        "Volume": "2303"
+                    },
+                    {
+                        "RefID": "28",
+                        "PO": "1065187836",
+                        "Pieces": "61",
+                        "Weight": "2623",
+                        "Volume": "379"
+                    }
+                ]
+            },
+            {
+                "StopInfo": {
+                    "StopNumber": "2",
+                    "StopType": "ST",
+                    "StopName": "STORE 6698",
+                    "StopAddress": "451 FM 686",
+                    "StopCity": "DAYTON",
+                    "StopState": "TX",
+                    "StopZip": "77535",
+                    "StopCountry": "USA",
+                    "StopID": "0605388003720"
+                },
+                "ContactInfo": {
+                    "Name": "DEREK JAMEYSON",
+                    "Phone": "2815732008",
+                    "Email": ""
+                },
+                "AppointmentInfo": {
+                    "EarlyDate": "20190506",
+                    "EarlyTime": "",
+                    "EarlyTimeZone": "CT",
+                    "LateDate": "20190506",
+                    "LateTime": "",
+                    "LateTimeZone": "CT"
+                },
+                "StopReferenceNumbers": [{
+                        "Type": "PO",
+                        "ReferenceNumber": "123456789"
+                    },
+                    {
+                        "Type": "ACB",
+                        "ReferenceNumber": "97"
+                    },
+                    {
+                        "Type": "BL",
+                        "ReferenceNumber": "BL1029384756"
+                    },
+                    {
+                        "Type": "P8",
+                        "ReferenceNumber": "91515709"
+                    }
+                ],
+                "OIDNumbers": [{
+                        "RefID": "28",
+                        "PO": "0815197030",
+                        "Pieces": "3",
+                        "Weight": "5361",
+                        "Volume": "102"
+                    },
+                    {
+                        "RefID": "28",
+                        "PO": "1065187836",
+                        "Pieces": "194",
+                        "Weight": "24563",
+                        "Volume": "2303"
+                    },
+                    {
+                        "RefID": "28",
+                        "PO": "1065187836",
+                        "Pieces": "61",
+                        "Weight": "2623",
+                        "Volume": "379"
+                    }
+                ]
+            }
+        ]
+    }
+},
+{
+    "Tender":   {
+        "SenderID": "925485US00",
+        "ReceiverID": "519905KT",
+        "TenderedDate": "20190505",
+        "TenderedTime": "2324",
+        "SCAC": "KNIG",
+        "BillOfLading": "222222222",
+        "PaymentMethod": "PP",
+        "TenderStatus": "00",
+        "TotalPieces": "2784",
+        "TotalWeight": "32547",
+        "ReferenceNumbers": [{
+                "Type": "PO",
+                "ReferenceNumber": "12345678900"
+            },
+            {
+                "Type": "ACB",
+                "ReferenceNumber": "97"
+            },
+            {
+                "Type": "BL",
+                "ReferenceNumber": "BL654321"
+            }
+        ],
+        "RespondBy": {
+            "Date": "20190506",
+            "Time": "0800",
+            "TimeZone": "CT"
+        },
+        "Comments": [{
+                "Comment": "aaaaaaaaaaaaaaaaaaaaaaaaaa"
+            },
+            {
+                "Comment": "bbbbbbbbbbbbbbbbbbbbbbbbbb"
+            },
+            {
+                "Comment": "cccccccccccccccccccccccccc"
+            },
+            {
+                "Comment": "ddddddddddddddddddddddddddddd"
+            },
+            {
+                "Comment": "eeeeeeeeeeeeeeeeeeeeeee"
+            }
+        ],
+        "HeaderLocations": [{
+                "Type": "BT",
+                "Name": "Wal-Mart Stores Inc",
+                "ID": "0078742000008",
+                "Address": "",
+                "City": "",
+                "State": "",
+                "ZipCode": "",
+                "Country": ""
+            },
+            {
+                "Type": "SH",
+                "Name": "Wal-Mart Stores Inc",
+                "ID": "0078742000008",
+                "Address": "",
+                "City": "",
+                "State": "",
+                "ZipCode": "",
+                "Country": ""
+            }
+        ],
+        "Equipment": {
+            "Initial": "WC",
+            "TrailerNumber": "90012",
+            "TrailerType": "TF",
+            "TrailerSize": "5300"
+        },
+        "Stops": [{
+                "StopInfo": {
+                    "StopNumber": "1",
+                    "StopType": "SF",
+                    "StopName": "IDC 91515709 BAYTOWN",
+                    "StopAddress": "4554 OSCAR NELSON JR DR",
+                    "StopCity": "BAYTOWN",
+                    "StopState": "TX",
+                    "StopZip": "77523",
+                    "StopCountry": "USA",
+                    "StopID": "91515709"
+                },
+                "ContactInfo": {
+                    "Name": "DEREK JAMEYSON",
+                    "Phone": "2815732008",
+                    "Email": ""
+                },
+                "AppointmentInfo": {
+                    "EarlyDate": "20190505",
+                    "EarlyTime": "2315",
+                    "EarlyTimeZone": "CT",
+                    "LateDate": "20190505",
+                    "LateTime": "2315",
+                    "LateTimeZone": "CT"
+                },
+                "StopReferenceNumbers": [{
+                        "Type": "PO",
+                        "ReferenceNumber": "123456789"
+                    },
+                    {
+                        "Type": "ACB",
+                        "ReferenceNumber": "97"
+                    },
+                    {
+                        "Type": "BL",
+                        "ReferenceNumber": "BL1029384756"
+                    },
+                    {
+                        "Type": "P8",
+                        "ReferenceNumber": "91515709"
+                    }
+                ],
+                "OIDNumbers": [{
+                        "RefID": "28",
+                        "PO": "0815197030",
+                        "Pieces": "3",
+                        "Weight": "5361",
+                        "Volume": "102"
+                    },
+                    {
+                        "RefID": "28",
+                        "PO": "1065187836",
+                        "Pieces": "194",
+                        "Weight": "24563",
+                        "Volume": "2303"
+                    },
+                    {
+                        "RefID": "28",
+                        "PO": "1065187836",
+                        "Pieces": "61",
+                        "Weight": "2623",
+                        "Volume": "379"
+                    }
+                ]
+            },
+            {
+                "StopInfo": {
+                    "StopNumber": "2",
+                    "StopType": "ST",
+                    "StopName": "STORE 6698",
+                    "StopAddress": "451 FM 686",
+                    "StopCity": "DAYTON",
+                    "StopState": "TX",
+                    "StopZip": "77535",
+                    "StopCountry": "USA",
+                    "StopID": "0605388003720"
+                },
+                "ContactInfo": {
+                    "Name": "DEREK JAMEYSON",
+                    "Phone": "2815732008",
+                    "Email": ""
+                },
+                "AppointmentInfo": {
+                    "EarlyDate": "20190506",
+                    "EarlyTime": "",
+                    "EarlyTimeZone": "CT",
+                    "LateDate": "20190506",
+                    "LateTime": "",
+                    "LateTimeZone": "CT"
+                },
+                "StopReferenceNumbers": [{
+                        "Type": "PO",
+                        "ReferenceNumber": "123456789"
+                    },
+                    {
+                        "Type": "ACB",
+                        "ReferenceNumber": "97"
+                    },
+                    {
+                        "Type": "BL",
+                        "ReferenceNumber": "BL1029384756"
+                    },
+                    {
+                        "Type": "P8",
+                        "ReferenceNumber": "91515709"
+                    }
+                ],
+                "OIDNumbers": [{
+                        "RefID": "28",
+                        "PO": "0815197030",
+                        "Pieces": "3",
+                        "Weight": "5361",
+                        "Volume": "102"
+                    },
+                    {
+                        "RefID": "28",
+                        "PO": "1065187836",
+                        "Pieces": "194",
+                        "Weight": "24563",
+                        "Volume": "2303"
+                    },
+                    {
+                        "RefID": "28",
+                        "PO": "1065187836",
+                        "Pieces": "61",
+                        "Weight": "2623",
+                        "Volume": "379"
+                    }
+                ]
+            }
+        ]
+    }
+}
+]

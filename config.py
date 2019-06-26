@@ -39,6 +39,7 @@ class Config(object):
     "TenderStatus",
     "TotalPieces",
     "TotalWeight",
+    "Hazmat",
     "ReferenceNumbers",
     "RespondBy",
     "Comments",
@@ -146,6 +147,17 @@ class Config(object):
         "32547"
       ],
       "pattern": "^(.*)$"
+    },
+    "Hazmat": {
+      "$id": "#/properties/Hazmat",
+      "type": "string",
+      "title": "The Hazmat Schema",
+      "default": "",
+      "examples": [
+        "Y",
+        "N"
+      ],
+      "pattern": "^([Y|N])$"
     },
     "ReferenceNumbers": {
       "$id": "#/properties/ReferenceNumbers",

@@ -13,6 +13,7 @@ from app.basicauth import basic_auth
 from jsonschema import validate
 import traceback
 import re
+import json
 
 
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -135,22 +136,71 @@ def catch_all(path):
 #** API Routes
 #*****************
 
-@app.route('/api/v1/tender', methods=['GET', 'POST'])
+@app.route('/api/v1/tender', methods=['GET', 'POST', 'PUT'])
 @basic_auth.login_required
 def apitenderpost():
-    # print(app.config['TENDER_SCHEMA'])
-    try:
-        data = request.get_json(force=True)
-    except TypeError:
-        return bad_request("Invalid json input")
+    print(request.method)
+    response = ""    
+    if request.method == "POST":
+        tenderCount = 0
+        try:
+            tenders = request.get_json(force=True)
+            
+        except TypeError:
+            return bad_request("Invalid json input")
 
-    try:
-        validate(instance=data, schema=app.config['TENDER_SCHEMA'])
-    except:
-        var = traceback.format_exc()
-        vv = var[376:500]
-        vv = re.sub(r'(.*)\n.*', r'\1', vv)
-        return bad_request(vv)
+        for tender in tenders['tenders']:
+            tenderCount = tenderCount +1
+            try:
+                validate(instance=tender, schema=app.config['TENDER_SCHEMA'])
+                print(tender['SenderID'])
+                print(tender['ReceiverID'])
+                print(tender['BillOfLading'])
+                print(tender['TenderedDate'])
+                print(tender['TenderedTime'])
+                print(tender['Hazmat'])
+                print(tender['RespondBy']['Date'],tender['RespondBy']['Time'],tender['RespondBy']['TimeZone'])
+                for refnum in tender['ReferenceNumbers']:
+                    print(refnum['Type'] + "::" + refnum['ReferenceNumber'])
 
-    return '{"Status" : "Success" , "Message" : "Tender Posted"}'
+                for comment in tender['Comments']:
+                    print(comment['Comment'])
+
+                for location in tender['HeaderLocations']:
+                    print(location['Type'])
+                    print(location['Name'])
+                    print(location['ID'])
+                    print(location['Address'])
+                    print(location['City'])
+                    print(location['State'])
+                    print(location['ZipCode'])
+                    print(location['Country'])
+
+                print(tender['Equipment']['Initial'])
+                print(tender['Equipment']['TrailerNumber'])
+                print(tender['Equipment']['TrailerType'])
+                print(tender['Equipment']['TrailerSize'])
+                
+                print("*********")
+                print("write file")
+                print("*********")
+                print("")
+                print("")
+                response = response + '{"TenderCount": ' + str(tenderCount) + ', "Status" : "Success", "Message": "Tender Posted"},\n'
+            except:
+                var = traceback.format_exc()
+                var = re.sub(r'(.*)\n.*', r'\1', var[376:500])
+                response = response + '{"TenderCount": ' + str(tenderCount) + ', "Status" : "Error", "Message": "' + var + '"},\n'
+
+        return '{\n"TenderRespones": [\n' + response + ']\n}'
+
+    elif request.method == "GET":
+        return '{\n"TenderRespones": [\n' + response + ']\n}'
+
+    elif request.method == "PUT":
+        return '{\n"TenderRespones": [\n' + response + ']\n}'
+
+    else:
+        response = '{"Error": "Incorrect method"}'
+        return '{\n"TenderRespones": [\n' + response + ']\n}'
 
