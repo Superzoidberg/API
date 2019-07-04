@@ -195,6 +195,11 @@ def apitenderpost():
         return '{\n"TenderRespones": [\n' + response + ']\n}'
 
     elif request.method == "GET":
+        try:
+            tenderStats = request.get_json(force=True)
+        except TypeError:
+            return bad_request("Invalid json input")
+
         return '{\n"TenderRespones": [\n' + response + ']\n}'
 
     elif request.method == "PUT":
