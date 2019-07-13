@@ -40,7 +40,6 @@ class Config(object):
     "TotalPieces",
     "TotalWeight",
     "Hazmat",
-    "ReferenceNumbers",
     "RespondBy",
     "Comments",
     "HeaderLocations",
@@ -56,7 +55,7 @@ class Config(object):
       "examples": [
         "receiver"
       ],
-      "pattern": "^(.*)$"
+      "pattern": "^(.{1,15})$"
     },
     "ReceiverID": {
       "$id": "#/properties/ReceiverID",
@@ -66,7 +65,7 @@ class Config(object):
       "examples": [
         "sender"
       ],
-      "pattern": "^(.*)$"
+      "pattern": "^(.{1,15})$"
     },
     "TenderedDate": {
       "$id": "#/properties/TenderedDate",
@@ -76,7 +75,7 @@ class Config(object):
       "examples": [
         "20190505"
       ],
-      "pattern": "^(.*)$"
+      "pattern": "^([0-9][0-9][0-9][0-9][0-1][0-9][0-3][0-9])$"
     },
     "TenderedTime": {
       "$id": "#/properties/TenderedTime",
@@ -86,7 +85,7 @@ class Config(object):
       "examples": [
         "2324"
       ],
-      "pattern": "^(.*)$"
+      "pattern": "^([0-2][0-9][0-5][0-9])$"
     },
     "SCAC": {
       "$id": "#/properties/SCAC",
@@ -96,7 +95,7 @@ class Config(object):
       "examples": [
         "SCAC"
       ],
-      "pattern": "^(.*)$"
+      "pattern": "^(\D{4})$"
     },
     "BillOfLading": {
       "$id": "#/properties/BillOfLading",
@@ -106,7 +105,7 @@ class Config(object):
       "examples": [
         "65788540"
       ],
-      "pattern": "^(.*)$"
+      "pattern": "^(.{1,30})$"
     },
     "PaymentMethod": {
       "$id": "#/properties/PaymentMethod",
@@ -114,9 +113,10 @@ class Config(object):
       "title": "The Paymentmethod Schema",
       "default": "",
       "examples": [
-        "PP"
+        "PP",
+        "CC"
       ],
-      "pattern": "^(.*)$"
+      "pattern": "^(CC|PP)$"
     },
     "TenderStatus": {
       "$id": "#/properties/TenderStatus",
@@ -126,7 +126,7 @@ class Config(object):
       "examples": [
         "00"
       ],
-      "pattern": "^(.*)$"
+      "pattern": "^(\d{2})$"
     },
     "TotalPieces": {
       "$id": "#/properties/TotalPieces",
@@ -136,7 +136,7 @@ class Config(object):
       "examples": [
         "2784"
       ],
-      "pattern": "^(.*)$"
+      "pattern": "^(\d{0,5})$"
     },
     "TotalWeight": {
       "$id": "#/properties/TotalWeight",
@@ -146,7 +146,7 @@ class Config(object):
       "examples": [
         "32547"
       ],
-      "pattern": "^(.*)$"
+      "pattern": "^(\d{0,5})$"
     },
     "Hazmat": {
       "$id": "#/properties/Hazmat",
@@ -180,7 +180,7 @@ class Config(object):
             "examples": [
               "PO"
             ],
-            "pattern": "^(.*)$"
+            "pattern": "^(\D{2,3})$"
           },
           "ReferenceNumber": {
             "$id": "#/properties/ReferenceNumbers/items/properties/ReferenceNumber",
@@ -190,7 +190,7 @@ class Config(object):
             "examples": [
               "123456789"
             ],
-            "pattern": "^(.*)$"
+            "pattern": "^(.{1,30})$"
           }
         }
       }
@@ -213,7 +213,7 @@ class Config(object):
           "examples": [
             "20190506"
           ],
-          "pattern": "^(.*)$"
+          "pattern": "^([0-9][0-9][0-9][0-9][0-1][0-9][0-3][0-9])$"
         },
         "Time": {
           "$id": "#/properties/RespondBy/properties/Time",
@@ -223,7 +223,7 @@ class Config(object):
           "examples": [
             "0800"
           ],
-          "pattern": "^(.*)$"
+          "pattern": "^([0-2][0-9][0-5][0-9])$"
         },
         "TimeZone": {
           "$id": "#/properties/RespondBy/properties/TimeZone",
@@ -233,7 +233,7 @@ class Config(object):
           "examples": [
             "CT"
           ],
-          "pattern": "^(.*)$"
+          "pattern": "^(\D{2})$"
         }
       }
     },
@@ -257,7 +257,7 @@ class Config(object):
             "examples": [
               "aaaaaaaaaaaaaaaaaaaaaaaaaa"
             ],
-            "pattern": "^(.*)$"
+            "pattern": "^(.{0,45})$"
           }
         }
       }
@@ -289,7 +289,7 @@ class Config(object):
             "examples": [
               "BT"
             ],
-            "pattern": "^(.*)$"
+            "pattern": "^(\D{2})$"
           },
           "Name": {
             "$id": "#/properties/HeaderLocations/items/properties/Name",
@@ -299,7 +299,7 @@ class Config(object):
             "examples": [
               "SOme Stores Inc"
             ],
-            "pattern": "^(.*)$"
+            "pattern": "^(.{0,25})$"
           },
           "ID": {
             "$id": "#/properties/HeaderLocations/items/properties/ID",
@@ -309,7 +309,7 @@ class Config(object):
             "examples": [
               "0078742000008"
             ],
-            "pattern": "^(.*)$"
+            "pattern": "^(.{0,17})$"
           },
           "Address": {
             "$id": "#/properties/HeaderLocations/items/properties/Address",
@@ -319,7 +319,7 @@ class Config(object):
             "examples": [
               ""
             ],
-            "pattern": "^(.*)$"
+            "pattern": "^(.{0,30})$"
           },
           "City": {
             "$id": "#/properties/HeaderLocations/items/properties/City",
@@ -329,7 +329,7 @@ class Config(object):
             "examples": [
               ""
             ],
-            "pattern": "^(.*)$"
+            "pattern": "^(.{0,30})$"
           },
           "State": {
             "$id": "#/properties/HeaderLocations/items/properties/State",
@@ -337,9 +337,10 @@ class Config(object):
             "title": "The State Schema",
             "default": "",
             "examples": [
-              ""
+              "AZ",
+              "NY"
             ],
-            "pattern": "^(.*)$"
+            "pattern": "^([A-Za-z][A-Za-z])$"
           },
           "ZipCode": {
             "$id": "#/properties/HeaderLocations/items/properties/ZipCode",
@@ -349,7 +350,7 @@ class Config(object):
             "examples": [
               ""
             ],
-            "pattern": "^(.*)$"
+            "pattern": "^([A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d|\d{5}(?:[-\s]\d{4})?)$"
           },
           "Country": {
             "$id": "#/properties/HeaderLocations/items/properties/Country",
@@ -357,9 +358,10 @@ class Config(object):
             "title": "The Country Schema",
             "default": "",
             "examples": [
-              ""
+              "US",
+              "CA"
             ],
-            "pattern": "^(.*)$"
+            "pattern": "^([A-Za-z][A-Za-z][A-Za-z]|[A-Za-z][A-Za-z])$"
           }
         }
       }
@@ -403,7 +405,7 @@ class Config(object):
           "examples": [
             "TF"
           ],
-          "pattern": "^(.*)$"
+          "pattern": "^([A-Z]{2})$"
         },
         "TrailerSize": {
           "$id": "#/properties/Equipment/properties/TrailerSize",
@@ -413,7 +415,7 @@ class Config(object):
           "examples": [
             "5300"
           ],
-          "pattern": "^(.*)$"
+          "pattern": "^(\d{4})$"
         }
       }
     },
@@ -457,7 +459,7 @@ class Config(object):
                 "examples": [
                   "1"
                 ],
-                "pattern": "^(.*)$"
+                "pattern": "^(\d+)$"
               },
               "StopType": {
                 "$id": "#/properties/Stops/items/properties/StopInfo/properties/StopType",
@@ -467,7 +469,7 @@ class Config(object):
                 "examples": [
                   "SF"
                 ],
-                "pattern": "^(.*)$"
+                "pattern": "^(SF|SH|ST|CN)$"
               },
               "StopName": {
                 "$id": "#/properties/Stops/items/properties/StopInfo/properties/StopName",
@@ -507,7 +509,7 @@ class Config(object):
                 "examples": [
                   "TX"
                 ],
-                "pattern": "^(.*)$"
+                "pattern": "^([A-Za-z][A-Za-z])$"
               },
               "StopZip": {
                 "$id": "#/properties/Stops/items/properties/StopInfo/properties/StopZip",
@@ -517,7 +519,7 @@ class Config(object):
                 "examples": [
                   "77523"
                 ],
-                "pattern": "^(.*)$"
+                "pattern": "^([A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d|\d{5}(?:[-\s]\d{4})?)$"
               },
               "StopCountry": {
                 "$id": "#/properties/Stops/items/properties/StopInfo/properties/StopCountry",
@@ -527,7 +529,7 @@ class Config(object):
                 "examples": [
                   "USA"
                 ],
-                "pattern": "^(.*)$"
+                "pattern": "^([A-Za-z][A-Za-z]|[A-Za-z][A-Za-z][A-Za-z])$"
               },
               "StopID": {
                 "$id": "#/properties/Stops/items/properties/StopInfo/properties/StopID",
@@ -546,9 +548,6 @@ class Config(object):
             "type": "object",
             "title": "The Contactinfo Schema",
             "required": [
-              "Name",
-              "Phone",
-              "Email"
             ],
             "properties": {
               "Name": {
@@ -559,7 +558,7 @@ class Config(object):
                 "examples": [
                   "MONTE PYTHON"
                 ],
-                "pattern": "^(.*)$"
+                "pattern": "^(^$|.*)$"
               },
               "Phone": {
                 "$id": "#/properties/Stops/items/properties/ContactInfo/properties/Phone",
@@ -569,7 +568,7 @@ class Config(object):
                 "examples": [
                   "5554561234"
                 ],
-                "pattern": "^(.*)$"
+                "pattern": "^(^$|.*)$"
               },
               "Email": {
                 "$id": "#/properties/Stops/items/properties/ContactInfo/properties/Email",
@@ -579,7 +578,7 @@ class Config(object):
                 "examples": [
                   ""
                 ],
-                "pattern": "^(.*)$"
+                "pattern": "^(^$|.*)$"
               }
             }
           },
@@ -588,12 +587,6 @@ class Config(object):
             "type": "object",
             "title": "The Appointmentinfo Schema",
             "required": [
-              "EarlyDate",
-              "EarlyTime",
-              "EarlyTimeZone",
-              "LateDate",
-              "LateTime",
-              "LateTimeZone"
             ],
             "properties": {
               "EarlyDate": {
@@ -604,7 +597,7 @@ class Config(object):
                 "examples": [
                   "20190505"
                 ],
-                "pattern": "^(.*)$"
+                "pattern": "^(^$|[0-9][0-9][0-9][0-9][0-1][0-9][0-3][0-9])$"
               },
               "EarlyTime": {
                 "$id": "#/properties/Stops/items/properties/AppointmentInfo/properties/EarlyTime",
@@ -614,7 +607,7 @@ class Config(object):
                 "examples": [
                   "2315"
                 ],
-                "pattern": "^(.*)$"
+                "pattern": "^(^$|[0-2][0-9][0-5][0-9])$"
               },
               "EarlyTimeZone": {
                 "$id": "#/properties/Stops/items/properties/AppointmentInfo/properties/EarlyTimeZone",
@@ -634,7 +627,7 @@ class Config(object):
                 "examples": [
                   "20190505"
                 ],
-                "pattern": "^(.*)$"
+                "pattern": "^(^$|[0-9][0-9][0-9][0-9][0-1][0-9][0-3][0-9])$"
               },
               "LateTime": {
                 "$id": "#/properties/Stops/items/properties/AppointmentInfo/properties/LateTime",
@@ -644,7 +637,7 @@ class Config(object):
                 "examples": [
                   "2315"
                 ],
-                "pattern": "^(.*)$"
+                "pattern": "^(^$|[0-2][0-9][0-5][0-9])$"
               },
               "LateTimeZone": {
                 "$id": "#/properties/Stops/items/properties/AppointmentInfo/properties/LateTimeZone",
