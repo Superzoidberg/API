@@ -168,8 +168,6 @@ class Config(object):
         "type": "object",
         "title": "The Items Schema",
         "required": [
-          "Type",
-          "ReferenceNumber"
         ],
         "properties": {
           "Type": {
@@ -180,7 +178,7 @@ class Config(object):
             "examples": [
               "PO"
             ],
-            "pattern": "^(\D{2,3})$"
+            "pattern": "^(^$|\D{2,3})$"
           },
           "ReferenceNumber": {
             "$id": "#/properties/ReferenceNumbers/items/properties/ReferenceNumber",
@@ -190,7 +188,7 @@ class Config(object):
             "examples": [
               "123456789"
             ],
-            "pattern": "^(.{1,30})$"
+            "pattern": "^(^$|.{1,30})$"
           }
         }
       }
@@ -246,7 +244,6 @@ class Config(object):
         "type": "object",
         "title": "The Items Schema",
         "required": [
-          "Comment"
         ],
         "properties": {
           "Comment": {
@@ -257,7 +254,7 @@ class Config(object):
             "examples": [
               "aaaaaaaaaaaaaaaaaaaaaaaaaa"
             ],
-            "pattern": "^(.{0,45})$"
+            "pattern": "^(^$|.{0,45})$"
           }
         }
       }
@@ -371,10 +368,6 @@ class Config(object):
       "type": "object",
       "title": "The Equipment Schema",
       "required": [
-        "Initial",
-        "TrailerNumber",
-        "TrailerType",
-        "TrailerSize"
       ],
       "properties": {
         "Initial": {
@@ -385,7 +378,7 @@ class Config(object):
           "examples": [
             "WC"
           ],
-          "pattern": "^(.*)$"
+          "pattern": "^(^$|.*)$"
         },
         "TrailerNumber": {
           "$id": "#/properties/Equipment/properties/TrailerNumber",
@@ -395,7 +388,7 @@ class Config(object):
           "examples": [
             "90012"
           ],
-          "pattern": "^(.*)$"
+          "pattern": "^(^$|.*)$"
         },
         "TrailerType": {
           "$id": "#/properties/Equipment/properties/TrailerType",
@@ -405,7 +398,7 @@ class Config(object):
           "examples": [
             "TF"
           ],
-          "pattern": "^([A-Z]{2})$"
+          "pattern": "^(^$|[A-Z]{2})$"
         },
         "TrailerSize": {
           "$id": "#/properties/Equipment/properties/TrailerSize",
@@ -415,7 +408,7 @@ class Config(object):
           "examples": [
             "5300"
           ],
-          "pattern": "^(\d{4})$"
+          "pattern": "^(^$|\d{4})$"
         }
       }
     },
@@ -447,8 +440,7 @@ class Config(object):
               "StopCity",
               "StopState",
               "StopZip",
-              "StopCountry",
-              "StopID"
+              "StopCountry"
             ],
             "properties": {
               "StopNumber": {
@@ -539,7 +531,7 @@ class Config(object):
                 "examples": [
                   "91515709"
                 ],
-                "pattern": "^(.*)$"
+                "pattern": "^(^$|.*)$"
               }
             }
           },
@@ -617,7 +609,7 @@ class Config(object):
                 "examples": [
                   "CT"
                 ],
-                "pattern": "^(.*)$"
+                "pattern": "^(^$|\D{2})$"
               },
               "LateDate": {
                 "$id": "#/properties/Stops/items/properties/AppointmentInfo/properties/LateDate",
@@ -647,7 +639,7 @@ class Config(object):
                 "examples": [
                   "CT"
                 ],
-                "pattern": "^(.*)$"
+                "pattern": "^(^$|\D{2})$"
               }
             }
           },
@@ -672,7 +664,7 @@ class Config(object):
                   "examples": [
                     "PO"
                   ],
-                  "pattern": "^(.*)$"
+                  "pattern": "^(^$|.{2,3})$"
                 },
                 "ReferenceNumber": {
                   "$id": "#/properties/Stops/items/properties/StopReferenceNumbers/items/properties/ReferenceNumber",
@@ -682,7 +674,7 @@ class Config(object):
                   "examples": [
                     "123456789"
                   ],
-                  "pattern": "^(.*)$"
+                  "pattern": "^(^$|.{1,17})$"
                 }
               }
             }
@@ -696,11 +688,6 @@ class Config(object):
               "type": "object",
               "title": "The Items Schema",
               "required": [
-                "RefID",
-                "PO",
-                "Pieces",
-                "Weight",
-                "Volume"
               ],
               "properties": {
                 "RefID": {
@@ -711,7 +698,7 @@ class Config(object):
                   "examples": [
                     "28"
                   ],
-                  "pattern": "^(.*)$"
+                  "pattern": "^(^$|.{1,20})$"
                 },
                 "PO": {
                   "$id": "#/properties/Stops/items/properties/OIDNumbers/items/properties/PO",
@@ -721,7 +708,7 @@ class Config(object):
                   "examples": [
                     "0815197030"
                   ],
-                  "pattern": "^(.*)$"
+                  "pattern": "^(^$|.{0,20})$"
                 },
                 "Pieces": {
                   "$id": "#/properties/Stops/items/properties/OIDNumbers/items/properties/Pieces",
@@ -731,7 +718,7 @@ class Config(object):
                   "examples": [
                     "3"
                   ],
-                  "pattern": "^(.*)$"
+                  "pattern": "^(^$|\d{0,8})$"
                 },
                 "Weight": {
                   "$id": "#/properties/Stops/items/properties/OIDNumbers/items/properties/Weight",
@@ -741,7 +728,7 @@ class Config(object):
                   "examples": [
                     "5361"
                   ],
-                  "pattern": "^(.*)$"
+                  "pattern": "^(^$|\d{0,8})$"
                 },
                 "Volume": {
                   "$id": "#/properties/Stops/items/properties/OIDNumbers/items/properties/Volume",
@@ -751,7 +738,7 @@ class Config(object):
                   "examples": [
                     "102"
                   ],
-                  "pattern": "^(.*)$"
+                  "pattern": "^(^$|\d{0,8})$"
                 }
               }
             }
